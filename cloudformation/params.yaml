@@ -52,7 +52,7 @@ Resources:
   Param6:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub experiments-param4-${EnvName}
+      Name: !Sub experiments-param6-${EnvName}
       Value: 123
       Description: 'demo: test param 2'
       Type: String
