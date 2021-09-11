@@ -19,8 +19,8 @@ Resources:
     Properties:
       Name: !Sub experiments-param1-${EnvName}
       Value:
-        Fn::ImportValue:
-          !Sub ${SecretStackName}-MyRDSSecretStatic
+        !ImportValue
+          'Fn::Sub': '${SecretStackName}-MyRDSSecretStatic'
       Description: 'demo: test param 1'
       Type: String
 
@@ -29,8 +29,8 @@ Resources:
     Properties:
       Name: !Sub experiments-param2-${EnvName}
       Value:
-        Fn::ImportValue:
-          !Sub ${SecretStackName}-MyRDSSecretDynamic
+        !ImportValue
+          'Fn::Sub': '${SecretStackName}-MyRDSSecretDynamic'
       Description: 'demo: test param 2'
       Type: String
 
