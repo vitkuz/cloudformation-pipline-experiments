@@ -13,7 +13,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param1-${EnvName}
-      Value: 123
+      Value: Param1Value
       Description: 'demo: test param 1'
       Type: String
 
@@ -21,7 +21,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param2-${EnvName}
-      Value: 123
+      Value: Param2Value
       Description: 'demo: test param 2'
       Type: String
 
@@ -29,7 +29,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param3-${EnvName}
-      Value: 123
+      Value: Param3Value
       Description: 'demo: test param 2'
       Type: String
 
@@ -37,7 +37,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param4-${EnvName}
-      Value: 123
+      Value: Param4Value
       Description: 'demo: test param 2'
       Type: String
 
@@ -45,7 +45,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param5-${EnvName}
-      Value: 123
+      Value: Param5Value
       Description: 'demo: test param 2'
       Type: String
 
@@ -53,7 +53,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param6-${EnvName}
-      Value: 123
+      Value: Param6Value
       Description: 'demo: test param 2'
       Type: String
 
@@ -62,5 +62,10 @@ Outputs:
     Description: This is param 1
     Value: !Ref Param1
     Export:
-      Name: !Sub ${AWS::StackName}-Param1-${EnvName}
+      Name: !Sub ${AWS::StackName}-Param1
+  Param2:
+    Description: This is param 1
+    Value: !Ref Param2
+    Export:
+      Name: !Sub ${AWS::StackName}-Param2
 
