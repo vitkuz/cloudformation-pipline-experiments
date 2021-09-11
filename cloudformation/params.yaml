@@ -8,12 +8,19 @@ Parameters:
     Description: Env name
     Type: String
 
+  SecretStackName:
+    Default: experiments-secrets-nonprod
+    type: String
+    Description: stack name
+
 Resources:
   Param1:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param1-${EnvName}
-      Value: !ImportValue experiments-secrets-nonprod-MyRDSSecretStatic
+      Value:
+        Fn::ImportValue:
+          !Sub ${SecretStackName}-MyRDSSecretStatic
       Description: 'demo: test param 1'
       Type: String
 
@@ -21,7 +28,9 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param2-${EnvName}
-      Value: !ImportValue experiments-secrets-nonprod-MyRDSSecretDynamic
+      Value:
+        Fn::ImportValue:
+          !Sub ${SecretStackName}-MyRDSSecretDynamic
       Description: 'demo: test param 2'
       Type: String
 
