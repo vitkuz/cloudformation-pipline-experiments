@@ -24,14 +24,14 @@ Resources:
       Value: 123
       Description: 'demo: test param 2'
       Type: String
-#
-#  Param3:
-#    Type: AWS::SSM::Parameter
-#    Properties:
-#      Name: !Sub experiments-param3-${EnvName}
-#      Value: 123
-#      Description: 'demo: test param 2'
-#      Type: String
+
+  Param3:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub experiments-param3-${EnvName}
+      Value: 123
+      Description: 'demo: test param 2'
+      Type: String
 
   Param4:
     Type: AWS::SSM::Parameter
