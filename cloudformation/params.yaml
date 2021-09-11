@@ -13,7 +13,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param1-${EnvName}
-      Value: Param1Value
+      Value: !ImportValue experiments-secrets-nonprod-MyRDSSecretStatic
       Description: 'demo: test param 1'
       Type: String
 
@@ -21,51 +21,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Sub experiments-param2-${EnvName}
-      Value: Param2Value
+      Value: !ImportValue experiments-secrets-nonprod-MyRDSSecretDynamic
       Description: 'demo: test param 2'
       Type: String
-
-  Param3:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Name: !Sub experiments-param3-${EnvName}
-      Value: Param3Value
-      Description: 'demo: test param 2'
-      Type: String
-
-  Param4:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Name: !Sub experiments-param4-${EnvName}
-      Value: Param4Value
-      Description: 'demo: test param 2'
-      Type: String
-
-  Param5:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Name: !Sub experiments-param5-${EnvName}
-      Value: Param5Value
-      Description: 'demo: test param 2'
-      Type: String
-
-  Param6:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Name: !Sub experiments-param6-${EnvName}
-      Value: Param6Value
-      Description: 'demo: test param 2'
-      Type: String
-
-Outputs:
-  Param1:
-    Description: This is param 1
-    Value: !GetAtt Param1.Value
-    Export:
-      Name: !Sub ${AWS::StackName}-Param1
-  Param2:
-    Description: This is param 1
-    Value: !GetAtt Param1.Value
-    Export:
-      Name: !Sub ${AWS::StackName}-Param2
 
