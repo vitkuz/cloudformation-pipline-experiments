@@ -10,7 +10,7 @@ Parameters:
 
   SecretStackName:
     Default: experiments-secrets-nonprod
-    type: String
+    Type: String
     Description: stack name
 
 Resources:
