@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Secrets
+
+Parameters:
+  EnvName:
+    Default: nonprod
+    Description: Env name
+    Type: String
+
+Resources:
+  MyQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub vitkuz-MyQueue-${EnvName}
+
+Outputs:
+  QueueURL:
+    Description: "URL of new Amazon SQS Queue"
+    Value: !Ref MyQueue

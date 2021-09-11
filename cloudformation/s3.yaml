@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  s3 buckets
+
+Parameters:
+  EnvName:
+    Default: nonprod
+    Description: Env name
+    Type: String
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub vitkuz-s3-${EnvName}

@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Secrets
+
+Parameters:
+  EnvName:
+    Default: nonprod
+    Description: Env name
+    Type: String
+
+Resources:
+  DatabaseFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub vitkuz-DatabaseFunctionRole-${EnvName}
+      Description: Role to call init functions for Retailer Master database
+
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+        - arn:aws:iam::aws:policy/SecretsManagerReadWrite

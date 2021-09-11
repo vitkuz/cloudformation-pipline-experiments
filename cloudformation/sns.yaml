@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Sns topics
+
+Parameters:
+  EnvName:
+    Default: nonprod
+    Description: Env name
+    Type: String
+
+Resources:
+  MySNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: !Sub vitkuz-topic-${EnvName}
+
+Outputs:
+  MySNSTopic:
+    Description: Sns topic
+    Value: !Ref MySNSTopic
+    Export:
+      Name: !Sub ${AWS::StackName}-vitkuz-topic-${EnvName}

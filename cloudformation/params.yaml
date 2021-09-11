@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Params
+
+Parameters:
+  EnvName:
+    Default: nonprod
+    Description: Env name
+    Type: String
+
+Resources:
+  Param1:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub vitkuz-param1-${EnvName}
+      Value: 123
+      Description: 'demo: test param 1'
+      Type: String
+
+  Param2:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub vitkuz-param2-${EnvName}
+      Value: 123
+      Description: 'demo: test param 2'
+      Type: String
