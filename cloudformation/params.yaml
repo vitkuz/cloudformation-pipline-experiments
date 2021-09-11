@@ -12,7 +12,7 @@ Resources:
   Param1:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub vitkuz-param1-${EnvName}
+      Name: !Sub experiments-param1-${EnvName}
       Value: 123
       Description: 'demo: test param 1'
       Type: String
@@ -20,7 +20,7 @@ Resources:
   Param2:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub vitkuz-param2-${EnvName}
+      Name: !Sub experiments-param2-${EnvName}
       Value: 123
       Description: 'demo: test param 2'
       Type: String
