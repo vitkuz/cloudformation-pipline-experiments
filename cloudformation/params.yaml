@@ -56,3 +56,11 @@ Resources:
       Value: 123
       Description: 'demo: test param 2'
       Type: String
+
+Outputs:
+  Param1:
+    Description: This is param 1
+    Value: !Ref Param1
+    Export:
+      Name: !Sub ${AWS::StackName}-Param1-${EnvName}
+
