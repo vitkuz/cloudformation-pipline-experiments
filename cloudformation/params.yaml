@@ -60,12 +60,12 @@ Resources:
 Outputs:
   Param1:
     Description: This is param 1
-    Value: !Ref Param1
+    Value: !GetAtt Param1.Value
     Export:
       Name: !Sub ${AWS::StackName}-Param1
   Param2:
     Description: This is param 1
-    Value: !Ref Param2
+    Value: !GetAtt Param1.Value
     Export:
       Name: !Sub ${AWS::StackName}-Param2
 
