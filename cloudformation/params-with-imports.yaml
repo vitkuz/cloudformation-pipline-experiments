@@ -3,17 +3,36 @@ Description: >-
   Params
 
 Parameters:
+
+  ProjectName:
+    Type: String
+
   EnvName:
     Default: nonprod
     Description: Env name
+    Type: String
+
+  SecretStackName:
     Type: String
 
 Resources:
   Param1:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub experiments-param-with-imports-1-${EnvName}
-      Value: !ImportValue experimants-infra-Param1
+      Name: !Sub ${ProjectName}-param-with-imports-1-${EnvName}
+      Value:
+        !ImportValue
+          'Fn::Sub': '${SecretStackName}-MyRDSSecretStatic'
+      Description: 'demo: test param 1'
+      Type: String
+
+  Param2:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${ProjectName}-param-with-imports-2-${EnvName}
+      Value:
+        !ImportValue
+        'Fn::Sub': '${SecretStackName}-MyRDSSecretDynamic'
       Description: 'demo: test param 1'
       Type: String
 
