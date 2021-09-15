@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Params
+
+Parameters:
+  EnvName:
+    Default: nonprod
+    Description: Env name
+    Type: String
+
+Resources:
+  Param1:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub experiments-param-with-imports-1-${EnvName}
+      Value: !ImportValue experimants-infra-Param1
+      Description: 'demo: test param 1'
+      Type: String
+
