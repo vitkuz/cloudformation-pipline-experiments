@@ -67,8 +67,10 @@ Resources:
       Engine: Postgres
       StorageType: gp2
       EngineVersion: '13.3'
-      MasterUsername: !Join ['', ['{{resolve:secretsmanager:', !Sub 'vitkuz-MyRDSSecretDynamic-${EnvName}', ':SecretString:username}}' ]]
-      MasterUserPassword: !Join ['', ['{{resolve:secretsmanager:', !Sub 'vitkuz-MyRDSSecretDynamic-${EnvName}', ':SecretString:password}}' ]]
+#      MasterUsername: !Join ['', ['{{resolve:secretsmanager:', !Sub 'vitkuz-MyRDSSecretDynamic-${EnvName}', ':SecretString:username}}' ]]
+#      MasterUserPassword: !Join ['', ['{{resolve:secretsmanager:', !Sub 'vitkuz-MyRDSSecretDynamic-${EnvName}', ':SecretString:password}}' ]]
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
       MultiAZ: true
       Port: 5432
       PubliclyAccessible: true
