@@ -70,10 +70,18 @@ Resources:
       Engine: Postgres
       StorageType: gp2
       EngineVersion: '13.3'
-      MasterUsername: !Join ['', ['{{resolve:secretsmanager:', !ImportValue 'Fn::Sub': '${SecretsStackName}-MyRDSSecretDynamic', ':SecretString:username}}' ]]
-      MasterUserPassword: !Join ['', ['{{resolve:secretsmanager:', !ImportValue 'Fn::Sub': '${SecretsStackName}-MyRDSSecretDynamic', ':SecretString:password}}' ]]
-#      MasterUsername: !Ref DBUsername
-#      MasterUserPassword: !Ref DBPassword
+      MasterUsername: !Join
+        - ''
+        - - '{{resolve:secretsmanager:'
+          -  !ImportValue
+             'Fn::Sub': '${SecretsStackName}-MyRDSSecretDynamic'
+          - ':SecretString:username}}'
+      MasterUserPassword: !Join
+        - ''
+        - - '{{resolve:secretsmanager:'
+          -  !ImportValue
+            'Fn::Sub': '${SecretsStackName}-MyRDSSecretDynamic'
+          - ':SecretString:password}}'
       MultiAZ: true
       Port: 5432
       PubliclyAccessible: true
